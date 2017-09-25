@@ -1,0 +1,25 @@
+<!--pages/home/student-page/student-page.wxml-->
+
+<template name="student-comment">
+  <view
+    class='student-page-comment'
+    data-id='{{id}}'
+    bindtap='onCommentPress'
+    style="border-color: {{selected ? '#32cdff' : '#E5E5E5'}}; color: {{selected ? '#32cdff' : '#696D76'}}"
+  >
+    {{title}}
+  </view>
+</template>
+
+<view class='student-page'>
+  <picker mode="date" value="{{curDate}}" start="2017-08-01" end="{{endDate}}"           bindchange="bindDateChange">
+    <view class="section-title student-page-date">
+      当前选择: {{curDate}}
+    </view>
+  </picker>
+  <view class='student-page-button-content'>
+    <template is='student-comment' data="{{ title: '发言积极', id: 0, selected: commentInfo[0] === 1 }}" />
+    <template is='student-comment' data="{{ title: '未及时订正', id: 1, selected: commentInfo[1] === 1 }}" />
+    <template is='student-comment' data="{{ title: '作业未完成', id: 2, selected: commentInfo[2] === 1 }}" />
+  </view>
+</view>

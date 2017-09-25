@@ -1,0 +1,46 @@
+<!--pages/home/home.wxml-->
+
+<template name="student-comment">
+  <view
+    class='home-student-comment'
+  >
+    <text>{{title}}</text>
+    <text>{{count || 0}}</text>
+  </view>
+</template>
+
+<template name="student-button">
+  <view
+    class='home-student-button'
+    data-index="{{index}}"
+    bindtap="onStudentButtonClick"
+  >
+    <view class='section-title'>
+      {{index + 1}}.{{name}}
+    </view>
+    <view wx:if="{{curIndex === index}}" class='home-student-button-content'>
+      <template is='student-comment' data="{{ title: '发言积极' }}" />
+      <template is='student-comment' data="{{ title: '未及时订正' }}" />
+      <template is='student-comment' data="{{ title: '作业未完成' }}" />
+    </view>
+  </view>
+</template>
+
+<view class='container home-page'>
+  <view>{{curDate}}</view>
+  <picker
+    wx:if="{{gradeInfos.length !== 0}}"
+    bindchange="bindGradeChange"
+    value="{{gradeIndex}}"
+    range="{{gradeOptions}}"
+  >
+    <view class="section-title home-title">
+      班级：<text class='home-grade-select'>{{gradeOptions[gradeIndex]}}</text>
+    </view>
+  </picker>
+  <view wx:if="{{gradeInfos.length !== 0}}" class='home-student-content'>
+    <block wx:for="{{studentInfos}}" wx:key="{{index}}">
+      <template is='student-button' data="{{...item, index, curIndex}}" />
+    </block>
+  </view>
+</view>

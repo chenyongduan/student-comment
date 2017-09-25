@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/edit/edit",
+    "pages/home/student-page/student-page"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#32cdff",
+    "navigationBarTitleText": "学生绩效",
+    "navigationBarTextStyle": "#fff"
+  },
+  "tabBar": {
+    "selectedColor": "#32CDFF",
+    "color": "#CCD0D7",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "images/ic_tab_home.png",
+        "selectedIconPath": "images/ic_tab_home_press.png",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/edit/edit",
+        "iconPath": "images/ic_tab_classmate.png",
+        "selectedIconPath": "images/ic_tab_classmate_press.png",
+        "text": "编辑"
+      }
+    ]
+  }
+}

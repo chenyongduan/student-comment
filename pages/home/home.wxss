@@ -1,0 +1,49 @@
+/* pages/home/home.wxss */
+
+.home-page {
+  padding: 0 40rpx;
+}
+
+.home-title {
+  margin-top: 32rpx;
+}
+
+.home-grade-select {
+  color: #32cdff;
+}
+
+.home-student-content {
+  width: 100%;
+}
+
+.home-student-button {
+  width: 100%;
+  padding: 8rpx 0;
+  border-bottom: #E5E5E5 2rpx solid;
+  font-size: 32rpx;
+  color: #696D76;
+}
+
+.home-student-button-content {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.home-student-comment {
+  width: 48%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  margin: 16rpx 0;
+  padding: 0 32rpx;
+  border: #E5E5E5 2rpx solid;
+  border-radius: 16rpx;
+  font-size: 32rpx;
+  color: #696D76;
+}

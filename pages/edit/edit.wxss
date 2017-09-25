@@ -1,0 +1,76 @@
+/* pages/edit/edit.wxss */
+
+.edit-page {
+  padding: 0 40rpx;
+}
+
+.edit-title {
+  margin-top: 32rpx;
+}
+
+.edit-grade-select {
+  color: #32cdff;
+}
+
+.edit-student-content {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.edit-student-button {
+  width: 30%;
+  height: 80rpx;
+  margin: 16rpx 1.5%;
+  border: #E5E5E5 2rpx solid;
+  border-radius: 16rpx;
+  font-size: 32rpx;
+  color: #696D76;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-student-button-input {
+  padding: 16rpx 0;
+  border-bottom: #E5E5E5 2rpx solid;
+}
+
+.edit-student-button-placeholder {
+  color: #CDD0D7;
+}
+
+.student-setting-modal {
+  z-index: 10;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-setting-close {
+  position: absolute;
+  top: 16rpx;
+  right: 16rpx;
+}
+
+.student-setting-content {
+  background-color: white;
+  border-radius: 16rpx;
+  width: 75%;
+  padding: 40rpx;
+}
+
+.student-settig-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 40rpx;
+}

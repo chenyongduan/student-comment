@@ -1,0 +1,64 @@
+<!--pages/edit/edit.wxml-->
+
+<template name="student-button">
+  <view
+    class='edit-student-button'
+    data-index="{{index}}"
+    data-name="{{name}}"
+    data-type="{{type}}"
+    data-id="{{id}}"
+    bindtap="onStudentButtonClick"
+  >
+    {{name}}
+  </view>
+</template>
+
+<view class='container edit-page'>
+  <view class='section-title edit-title'>班级</view>
+  <view class='edit-student-content'>
+    <block wx:for="{{gradeInfos}}" wx:key="{{index}}">
+      <template is='student-button' data="{{name: item.name, index, type: 'grade'}}" />
+    </block>
+    <template is='student-button' data="{{name: '添加', index: ADD_INDEX, type: 'grade'}}" />
+  </view>
+  <picker
+    wx:if="{{gradeInfos.length !== 0}}"
+    bindchange="bindGradeChange"
+    value="{{gradeIndex}}"
+    range="{{gradeOptions}}"
+  >
+    <view class="section-title edit-title">
+      <text class='edit-grade-select'>{{gradeOptions[gradeIndex]}}</text>学生
+    </view>
+  </picker>
+  <view wx:if="{{gradeInfos.length !== 0}}" class='edit-student-content'>
+    <block wx:for="{{studentInfos}}" wx:key="{{index}}">
+      <template is='student-button' data="{{...item, index, type: 'student'}}" />
+    </block>
+    <template is='student-button' data="{{name: '添加', index: ADD_INDEX, type: 'student'}}"    />
+  </view>
+</view>
+
+<view wx:if="{{curStudent.index !== undefind}}" class='student-setting-modal' bindtap='onStudentModalClick'>
+  <view class='student-setting-content' catchtap='onStudentContentClick'>
+    <icon class='edit-setting-close' type="cancel" size="25"/>
+    <view class='section-title'>{{curStudent.title}}</view>
+    <input
+      value="{{curStudent.index === ADD_INDEX ? '' : curStudent.name}}"
+      class='edit-student-button-input'
+      placeholder-class='edit-student-button-placeholder'
+      bindinput="bindStudentInput"
+      placeholder="{{'请输入' + curStudent.title + '名字'}}"
+      auto-focus
+    />
+    <view class='student-settig-footer'>
+      <button
+        type="warn"
+        size='mini'
+        disabled="{{curStudent.index === ADD_INDEX}}"
+        bindtap='onStudentDelete'
+      >删除</button>
+      <button type="primary" size='mini' bindtap='onStudentSave'>保存</button>
+    </view>
+  </view>
+</view>
