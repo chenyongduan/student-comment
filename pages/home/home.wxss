@@ -16,9 +16,22 @@
   width: 100%;
 }
 
+.home-student-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16rpx;
+}
+
+.home-student-title-detail {
+  color: #32cdff;
+  font-size: 32rpx;
+}
+
 .home-student-button {
   width: 100%;
-  padding: 8rpx 0;
+  padding: 20rpx 0;
   border-bottom: #E5E5E5 2rpx solid;
   font-size: 32rpx;
   color: #696D76;

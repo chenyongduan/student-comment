@@ -4,12 +4,11 @@ import moment from '../../libs/moment';
 
 Page({
   data: {
-    curDate: moment().format('YYYY年MM月DD号'),
     gradeOptions: [],
     gradeInfos: [],
     gradeIndex: 0,
     studentInfos: [],
-    curIndex: 0,
+    curIndex: null,
   },
   onLoad: function (options) {
     wx.getStorage({
@@ -56,11 +55,14 @@ Page({
   },
   onStudentButtonClick: function (e) {
     const { index } = e.currentTarget.dataset;
-    // if (index === this.data.curIndex) {
-    //   this.setData({ curIndex: null });
-    //   return;
-    // }
-    // this.setData({ curIndex: index });
+    if (index === this.data.curIndex) {
+      this.setData({ curIndex: null });
+      return;
+    }
+    this.setData({ curIndex: index });
+  },
+  onStudentDetailClick: function (e) {
+    const { index } = e.currentTarget.dataset;
     const { gradeInfos, gradeIndex, studentInfos } = this.data;
     const { id } = gradeInfos[gradeIndex];
     const studentId = studentInfos[index].id;
