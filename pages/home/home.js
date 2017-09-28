@@ -2,6 +2,12 @@
 
 import moment from '../../libs/moment';
 
+const COMMENT_OPTIONS = [
+  '发言积极',
+  '未及时订正',
+  '作业未完成',
+];
+
 Page({
   data: {
     gradeOptions: [],
@@ -29,6 +35,46 @@ Page({
         });
         this.setData({ gradeInfos: res.data, gradeOptions });
         this.calcTotalComment(studentInfos);
+      }
+    });
+    this.uploadStudentInfo();
+  },
+  uploadStudentInfo: function () {
+    wx.getStorage({
+      key: 'grade',
+      success: (res) => {
+        const uploadInfos = [];
+        res.data.map((gredeInfo) => {
+          const { id, studentIds } = gredeInfo;
+          studentIds.map(studentId => {
+            try {
+              var studentInfo = wx.getStorageSync(`grade_${id}_${studentId}`);
+              if (studentInfo) {
+                const uploadInfo = [];
+                uploadInfo.push(studentInfo.name);
+                uploadInfo.push(gredeInfo.name);
+                const totalComment = {};
+                const comment = studentInfo.comment || {};
+                const commentKeys = Object.keys(comment);
+                commentKeys.map((commentKey) => {
+                  comment[commentKey].map((id) => {
+                    totalComment[id] = totalComment[id] || 0;
+                    totalComment[id] += 1;
+                  });
+                });
+                for (let i = 0; i < COMMENT_OPTIONS.length; i += 1) {
+                  const curCount = totalComment[String(i)] || 0;
+                  uploadInfo.push(curCount);
+                }
+                uploadInfos.push(uploadInfo);
+              }
+            } catch (e) {
+              // Do something when catch error
+            }
+          });
+        });
+        const jsonInfo = JSON.stringify(uploadInfos);
+        console.warn(jsonInfo)
       }
     });
   },
