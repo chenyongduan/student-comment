@@ -1,6 +1,7 @@
 /* pages/home/home.wxss */
 
 .home-page {
+  width: 100%;
   padding: 0 40rpx;
 }
 
@@ -59,4 +60,19 @@
   border-radius: 16rpx;
   font-size: 32rpx;
   color: #696D76;
+}
+
+.home-stuent-empty {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-student-empty-title {
+  font-size: 32rpx;
+  color: #696D76;
+  margin-bottom: 16rpx;
 }

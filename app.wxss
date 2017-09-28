@@ -35,3 +35,9 @@ text {
   font-size: 36rpx;
   color: #8A8F9B;
 }
+
+.button-border {
+  border: 2rpx #32cdff solid;
+  background-color: transparent;
+  color: #32cdff;
+}

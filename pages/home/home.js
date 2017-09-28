@@ -27,9 +27,26 @@ Page({
             // Do something when catch error
           }
         });
-        this.setData({ gradeInfos: res.data, gradeOptions, studentInfos });
+        this.setData({ gradeInfos: res.data, gradeOptions });
+        this.calcTotalComment(studentInfos);
       }
     });
+  },
+  calcTotalComment: function (studentInfos) {
+    studentInfos.map((studentInfo) => {
+      const totalComment = {};
+      const comment = studentInfo.comment || {};
+      const commentKeys = Object.keys(comment);
+      commentKeys.map((commentKey) => {
+        comment[commentKey].map((id) => {
+          totalComment[id] = totalComment[id] || 0;
+          totalComment[id] += 1;
+        });
+      });
+      console.warn(totalComment)
+      studentInfo.totalComment = totalComment;
+    });
+    this.setData({ studentInfos });
   },
   bindGradeChange: function (e) {
     const { gradeInfos } = this.data;
@@ -47,8 +64,8 @@ Page({
       }
     });
 
+    this.calcTotalComment(studentInfos);
     this.setData({
-      studentInfos,
       gradeIndex: index,
       curIndex: null,
     });
@@ -67,7 +84,20 @@ Page({
     const { id } = gradeInfos[gradeIndex];
     const studentId = studentInfos[index].id;
     wx.navigateTo({
-      url: `student-page/student-page?gradeId=${id}&studentId=${studentId}`,
+      url: `student-page/student-page?gradeId=${id}&studentId=${studentId}&index=${index}`,
     });
+  },
+  onAddStudentClick: function (e) {
+    wx.switchTab({
+      url: '../edit/edit',
+    });
+  },
+  refreshStudentInfos: function (index, studentInfo) {
+    const { studentInfos } = this.data;
+    console.warn(this)
+    if (studentInfos[index]) {
+      studentInfos[index] = studentInfo;
+    }
+    this.calcTotalComment(studentInfos);
   },
 })
