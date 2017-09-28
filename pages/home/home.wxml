@@ -17,11 +17,11 @@
   >
     <view class='section-title home-student-title'>
       <text>{{name}}</text>
-      <text
+      <view
         class='home-student-title-detail'
         data-index='{{index}}'
         catchtap='onStudentDetailClick'
-      >详情</text>
+      >详情</view>
     </view>
     <view wx:if="{{curIndex === index}}" class='home-student-button-content'>
       <template is='student-comment' data="{{ title: '发言积极', count: totalComment[0] || 0 }}" />
@@ -32,6 +32,10 @@
 </template>
 
 <view class='container home-page'>
+  <view class='home-page-search-button' bindtap='onSearchClick'>
+    <icon type="search" size='20' />
+    <text class='home-page-search-title'>搜索</text>
+  </view>
   <picker
     wx:if="{{gradeInfos.length !== 0}}"
     bindchange="bindGradeChange"

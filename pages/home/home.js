@@ -43,7 +43,6 @@ Page({
           totalComment[id] += 1;
         });
       });
-      console.warn(totalComment)
       studentInfo.totalComment = totalComment;
     });
     this.setData({ studentInfos });
@@ -94,10 +93,14 @@ Page({
   },
   refreshStudentInfos: function (index, studentInfo) {
     const { studentInfos } = this.data;
-    console.warn(this)
     if (studentInfos[index]) {
       studentInfos[index] = studentInfo;
     }
     this.calcTotalComment(studentInfos);
+  },
+  onSearchClick: function () {
+    wx.navigateTo({
+      url: 'search-page/search-page',
+    })
   },
 })

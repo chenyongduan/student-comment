@@ -1,0 +1,16 @@
+<!--pages/home/search-page/search-page.wxml-->
+<view class='container search-page'>
+  <view class='search-page-search-view'>
+    <view class='search-page-search-button'>
+      <icon type="search" size='20' />
+      <input
+        class='search-page-search-input'
+        bindinput="bindSearchInput"
+        bindconfirm="bindConfirmEvent"
+        placeholder='搜索'
+        focus
+      />
+    </view>
+    <view class='search-page-search-text' bindtap='onSearchClick'>搜索</view>
+  </view>
+</view>
