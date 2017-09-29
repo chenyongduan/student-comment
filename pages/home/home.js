@@ -1,12 +1,15 @@
 // pages/home/home.js
-
 import moment from '../../libs/moment';
+import { wxRequest } from '../../utils/wx-request';
+import { uploadStudent } from '../../server-api/index';
 
 const COMMENT_OPTIONS = [
   '发言积极',
   '未及时订正',
   '作业未完成',
 ];
+
+const App = getApp();
 
 Page({
   data: {
@@ -43,16 +46,16 @@ Page({
     wx.getStorage({
       key: 'grade',
       success: (res) => {
-        const uploadInfos = [];
+        const contentInfos = [];
         res.data.map((gredeInfo) => {
           const { id, studentIds } = gredeInfo;
           studentIds.map(studentId => {
             try {
               var studentInfo = wx.getStorageSync(`grade_${id}_${studentId}`);
               if (studentInfo) {
-                const uploadInfo = [];
-                uploadInfo.push(studentInfo.name);
-                uploadInfo.push(gredeInfo.name);
+                const contentInfo = [];
+                contentInfo.push(studentInfo.name);
+                contentInfo.push(gredeInfo.name);
                 const totalComment = {};
                 const comment = studentInfo.comment || {};
                 const commentKeys = Object.keys(comment);
@@ -64,17 +67,43 @@ Page({
                 });
                 for (let i = 0; i < COMMENT_OPTIONS.length; i += 1) {
                   const curCount = totalComment[String(i)] || 0;
-                  uploadInfo.push(curCount);
+                  contentInfo.push(String(curCount));
                 }
-                uploadInfos.push(uploadInfo);
+                contentInfos.push(contentInfo);
               }
             } catch (e) {
               // Do something when catch error
             }
           });
         });
-        const jsonInfo = JSON.stringify(uploadInfos);
-        console.warn(jsonInfo)
+        const header = [
+          {
+            caption: '姓名',
+            type: 'string',
+          },
+          {
+            caption: '班级',
+            type: 'string',
+          },
+          {
+            caption: COMMENT_OPTIONS[0],
+            type: 'string',
+          },
+          {
+            caption: COMMENT_OPTIONS[1],
+            type: 'string',
+          },
+          {
+            caption: COMMENT_OPTIONS[2],
+            type: 'string',
+          }];
+        const uploadInfo = {};
+        uploadInfo.cols = header;
+        uploadInfo.rows = contentInfos;
+        const jsonInfo = JSON.stringify(uploadInfo);
+        setTimeout(() => {
+          wxRequest(uploadStudent(App.globalData.openId, jsonInfo));
+        }, 3000);
       }
     });
   },
