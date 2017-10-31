@@ -28,7 +28,7 @@ Page({
         const studentInfos = [];
         studentIds.map(studentId => {
           try {
-            var value = wx.getStorageSync(`grade_${id}_${studentId}`);
+            var value = wx.getStorageSync(`grade_${id}_${studentId}`); 
             if (value) {
               studentInfos.push(value);
             }
@@ -40,7 +40,7 @@ Page({
         this.calcTotalComment(studentInfos);
       }
     });
-    this.uploadStudentInfo();
+    // this.uploadStudentInfo();
   },
   uploadStudentInfo: function () {
     wx.getStorage({
