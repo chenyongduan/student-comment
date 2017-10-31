@@ -24,9 +24,9 @@
       >详情</view>
     </view>
     <view wx:if="{{curIndex === index}}" class='home-student-button-content'>
-      <template is='student-comment' data="{{ title: '发言积极', count: totalComment[0] || 0 }}" />
-      <template is='student-comment' data="{{ title: '未及时订正', count: totalComment[1] || 0 }}" />
-      <template is='student-comment' data="{{ title: '作业未完成', count: totalComment[2] || 0 }}" />
+      <block wx:for="{{commentOptions}}" wx:key="{{index}}">
+        <template is='student-comment' data="{{ title: item.name, count: totalComment[item.id] }}" />
+      </block>
     </view>
   </view>
 </template>
@@ -48,7 +48,7 @@
   </picker>
   <view wx:if="{{gradeInfos.length !== 0}}" class='home-student-content'>
     <block wx:for="{{studentInfos}}" wx:key="{{index}}">
-      <template is='student-button' data="{{...item, index, curIndex}}" />
+      <template is='student-button' data="{{...item, index, curIndex, commentOptions}}" />
     </block>
   </view>
   <view wx:if="{{gradeInfos.length === 0}}" class='home-stuent-empty'>

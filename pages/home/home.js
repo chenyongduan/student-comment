@@ -16,6 +16,7 @@ Page({
     gradeOptions: [],
     gradeInfos: [],
     gradeIndex: 0,
+    commentOptions: [],
     studentInfos: [],
     curIndex: null,
   },
@@ -40,13 +41,26 @@ Page({
         this.calcTotalComment(studentInfos);
       }
     });
+    const commentOptions = this.getComment();
+    this.setData({ commentOptions });
     // this.uploadStudentInfo();
+  },
+  getComment: function () {
+    try {
+      var value = wx.getStorageSync('comment')
+      if (value) {
+        return value;
+      }
+    } catch (e) {
+      return [];
+    }
   },
   uploadStudentInfo: function () {
     wx.getStorage({
       key: 'grade',
       success: (res) => {
         const contentInfos = [];
+        const commentOptions = this.getComment();
         res.data.map((gredeInfo) => {
           const { id, studentIds } = gredeInfo;
           studentIds.map(studentId => {
@@ -65,7 +79,7 @@ Page({
                     totalComment[id] += 1;
                   });
                 });
-                for (let i = 0; i < COMMENT_OPTIONS.length; i += 1) {
+                for (let i = 0; i < commentOptions.length; i += 1) {
                   const curCount = totalComment[String(i)] || 0;
                   contentInfo.push(String(curCount));
                 }
@@ -86,15 +100,15 @@ Page({
             type: 'string',
           },
           {
-            caption: COMMENT_OPTIONS[0],
+            caption: commentOptions[0],
             type: 'string',
           },
           {
-            caption: COMMENT_OPTIONS[1],
+            caption: commentOptions[1],
             type: 'string',
           },
           {
-            caption: COMMENT_OPTIONS[2],
+            caption: commentOptions[2],
             type: 'string',
           }];
         const uploadInfo = {};
@@ -176,6 +190,6 @@ Page({
   onSearchClick: function () {
     wx.navigateTo({
       url: 'search-page/search-page',
-    })
+    });
   },
 })
