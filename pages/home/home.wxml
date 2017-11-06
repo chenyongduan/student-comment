@@ -10,13 +10,13 @@
 </template>
 
 <template name="student-button">
-  <view
-    class='home-student-button'
-    data-index="{{index}}"
-    bindtap="onStudentButtonClick"
-  >
+  <view class='home-student-button'>
     <view class='section-title home-student-title'>
-      <text>{{name}}</text>
+      <view
+        class='home-student-title-name'
+        data-index="{{index}}"
+        bindtap="onStudentButtonClick"
+      >{{name}}</view>
       <view
         class='home-student-title-detail'
         data-index='{{index}}'

@@ -7,6 +7,7 @@ Page({
     endDate: moment().format('YYYY-MM-DD'),
     studentInfo: {},
     commentInfo: {},
+    commentOptions: [],
   },
   gradeId: 0,
   studentId: 0,
@@ -26,7 +27,14 @@ Page({
         this.setData({ studentInfo });
         this.refreshCommentInfo(curComment);
       },
-    })
+    });
+    wx.getStorage({
+      key: 'comment',
+      success: (res) => {
+        const commentOptions = res.data;
+        this.setData({ commentOptions });
+      },
+    });
   },
   onUnload: function () {
     const { studentInfo } = this.data;

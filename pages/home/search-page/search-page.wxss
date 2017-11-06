@@ -37,3 +37,24 @@
   color: #32cdff;
   margin-left: 32rpx;
 }
+
+.search-page-options {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 80rpx;
+  border: #E5E5E5 2rpx solid;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  z-index: -1;
+}
+
+.search-page-options-item {
+  height: 100rpx;
+  border-bottom: #E5E5E5 2rpx solid;
+  display: flex;
+  align-items: center;
+  padding-left: 16rpx;
+  font-size: 32rpx;
+  color: #696D76;
+}

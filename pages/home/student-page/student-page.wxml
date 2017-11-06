@@ -18,8 +18,8 @@
     </view>
   </picker>
   <view class='student-page-button-content'>
-    <template is='student-comment' data="{{ title: '发言积极', id: 0, selected: commentInfo[0] === 1 }}" />
-    <template is='student-comment' data="{{ title: '未及时订正', id: 1, selected: commentInfo[1] === 1 }}" />
-    <template is='student-comment' data="{{ title: '作业未完成', id: 2, selected: commentInfo[2] === 1 }}" />
+    <block wx:for="{{commentOptions}}" wx:key="{{index}}">
+      <template is='student-comment' data="{{ title: item.name, id: item.id, selected: commentInfo[item.id] === 1 }}" />
+    </block>
   </view>
 </view>

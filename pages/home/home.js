@@ -3,12 +3,6 @@ import moment from '../../libs/moment';
 import { wxRequest } from '../../utils/wx-request';
 import { uploadStudent } from '../../server-api/index';
 
-const COMMENT_OPTIONS = [
-  '发言积极',
-  '未及时订正',
-  '作业未完成',
-];
-
 const App = getApp();
 
 Page({

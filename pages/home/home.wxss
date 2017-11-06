@@ -9,7 +9,7 @@
   width: 70%;
   border: #E5E5E5 2rpx solid;
   border-radius: 16rpx;
-  padding: 12rpx 0;
+  padding: 12rpx 0; 
   margin: 32rpx auto 0;
   display: flex;
   flex-direction: row;
@@ -42,19 +42,30 @@
   align-items: center;
 }
 
+.home-student-title-name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex: 2;
+  padding-left: 16rpx;
+}
+
 .home-student-title-detail {
   color: #32cdff;
   font-size: 32rpx;
   height: 60rpx;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  flex: 1;
+  padding-right: 16rpx;
 }
 
 .home-student-button {
   width: 100%;
-  padding: 8rpx 16rpx;
+  /* padding: 8rpx 16rpx; */
   border-bottom: #E5E5E5 2rpx solid;
   font-size: 32rpx;
   color: #696D76;

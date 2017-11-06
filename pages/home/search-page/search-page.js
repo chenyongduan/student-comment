@@ -2,6 +2,7 @@
 Page({
   data: {
     curStudentInfo: {},
+    searchOptions: ["sdf", "qwrwer"],
   },
   studentInfos: [],
   inputValue: '',

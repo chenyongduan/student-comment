@@ -10,6 +10,13 @@
         placeholder='搜索'
         focus
       />
+      <view class='search-page-options'>
+        <block wx:for="{{searchOptions}}" wx:index="{{index}}">
+          <view class='search-page-options-item'>
+            {{item}}
+          </view>
+        </block>
+      </view>
     </view>
     <view class='search-page-search-text' bindtap='onSearchClick'>搜索</view>
   </view>
