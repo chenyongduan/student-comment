@@ -26,7 +26,8 @@
 				{
 					"id": -1,
 					"name": "search",
-					"pathName": "pages/home/search-page/search-page"
+					"pathName": "pages/home/search-page/search-page",
+					"query": ""
 				}
 			]
 		}

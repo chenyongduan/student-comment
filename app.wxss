@@ -4,6 +4,7 @@
   normal: #696D76,
   strong: #8A8F9B,
   blue: #32cdff,
+  gray: #E1E2E3
 */
 page {
   height: 100%;

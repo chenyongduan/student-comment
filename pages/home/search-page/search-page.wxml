@@ -7,17 +7,29 @@
         class='search-page-search-input'
         bindinput="bindSearchInput"
         bindconfirm="bindConfirmEvent"
-        placeholder='搜索'
+        placeholder='请输入评价类型'
+        placeholder-class='search-page-search-placeholder'
         focus
       />
       <view wx:if="{{searchOptions.length > 0}}" class='search-page-options'>
         <block wx:for="{{searchOptions}}" wx:key="{{index}}">
-          <view class='search-page-options-item'>
-            {{item}}
+          <view
+            data-id='{{item.id}}'
+            class='search-page-options-item'
+            bindtap='onSearchItemClick'
+          >
+            {{item.name}}
           </view>
         </block>
       </view>
     </view>
     <view class='search-page-search-text' bindtap='onSearchClick'>搜索</view>
+  </view>
+  <view class='search-page-content'>
+    <block wx:for="{{searchResult}}" wx:key="{{index}}">
+      <view class='search-page-item'>
+        {{item.name}}
+      </view>
+    </block>
   </view>
 </view>
