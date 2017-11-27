@@ -10,8 +10,8 @@
         placeholder='搜索'
         focus
       />
-      <view class='search-page-options'>
-        <block wx:for="{{searchOptions}}" wx:index="{{index}}">
+      <view wx:if="{{searchOptions.length > 0}}" class='search-page-options'>
+        <block wx:for="{{searchOptions}}" wx:key="{{index}}">
           <view class='search-page-options-item'>
             {{item}}
           </view>

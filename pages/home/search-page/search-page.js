@@ -1,31 +1,37 @@
 // pages/home/search-page/search-page.js
+const { wxPromise } = require("../../../utils/util.js");
+
 Page({
   data: {
     curStudentInfo: {},
-    searchOptions: ["sdf", "qwrwer"],
+    searchOptions: [],
+    commentOptions: [],
   },
   studentInfos: [],
   inputValue: '',
   onLoad: function (options) {
-    wx.getStorage({
-      key: 'grade',
-      success: (res) => {
-        const studentInfos = [];
-        res.data.map((gredeInfo) => {
-          const { id, studentIds } = gredeInfo;
-          studentIds.map(studentId => {
-            try {
-              var value = wx.getStorageSync(`grade_${id}_${studentId}`);
-              if (value) {
-                studentInfos.push(value);
-              }
-            } catch (e) {
-              // Do something when catch error
+    wxPromise(wx.getStorage, { key: 'grade' }).then((res) => {
+      const studentInfos = [];
+      res.data.map((gredeInfo) => {
+        const { id, studentIds } = gredeInfo;
+        studentIds.map(studentId => {
+          try {
+            var value = wx.getStorageSync(`grade_${id}_${studentId}`);
+            if (value) {
+              studentInfos.push(value);
             }
-          });
+          } catch (e) {}
         });
-        this.studentInfos = studentInfos;
-      }
+      });
+      console.error(studentInfos)
+      this.studentInfos = studentInfos;
+    });
+    wxPromise(wx.getStorage, { key: 'comment' }).then((res) => {
+      const commentOptions = [];
+      res.data.map((value) => {
+        commentOptions.push(value);
+      });
+      this.setData({ commentOptions });
     });
   },
   bindSearchInput: function (e) {

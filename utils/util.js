@@ -70,20 +70,18 @@ const extendObj = function (o_1, o_2) {
   return o_1;
 };
 
-function wxPromise(fn) {
-  return (obj = {}) => {
-    return new Promise((resolve, reject) => {
-      obj.success = (res) => {
-        resolve(res)
-      }
+function wxPromise(fn, obj = {}) {
+  return new Promise((resolve, reject) => {
+    obj.success = (res) => {
+      resolve(res)
+    }
 
-      obj.fail = (res) => {
-        reject(res)
-      }
+    obj.fail = (res) => {
+      reject(res)
+    }
 
-      fn(obj)
-    })
-  }
+    fn(obj)
+  });
 }
 
 Promise.prototype.finally = function (callback) {
