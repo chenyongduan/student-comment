@@ -4,7 +4,8 @@
     "pages/edit/edit",
     "pages/home/student-page/student-page",
     "pages/home/search-page/search-page",
-    "pages/home/date-list-page/date-list-page"
+    "pages/home/date-list-page/date-list-page",
+    "pages/home/date-search-page/date-search-page"
   ],
   "window": {
     "backgroundTextStyle": "light",

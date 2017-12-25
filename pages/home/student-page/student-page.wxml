@@ -12,7 +12,7 @@
 </template>
 
 <view class='student-page'>
-  <picker mode="date" value="{{curDate}}" start="2017-08-01" end="{{endDate}}"           bindchange="bindDateChange">
+  <picker mode="date" value="{{curDate}}" start="2017-08-01" end="{{endDate}}" bindchange="bindDateChange">
     <view class="section-title student-page-date">
       当前选择: <text class="student-page-date-text">{{curDate}}</text>
     </view>

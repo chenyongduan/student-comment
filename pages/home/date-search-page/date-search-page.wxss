@@ -1,0 +1,47 @@
+/* pages/home/date-search-page/date-search-page.wxss */
+
+.date-search-page {
+  height: 100%;
+  padding: 0 40rpx;
+}
+
+.date-search-page-date {
+  padding: 32rpx 0;
+}
+
+.date-search-page-date-text {
+  color: #32cdff;
+}
+
+.date-search-page-content {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.date-search-page-item {
+  width: 45%;
+  height: 100rpx;
+  border: #E5E5E5 2rpx solid;
+  padding-left: 16rpx;
+  font-size: 32rpx;
+  color: #696D76;
+  display: flex;
+  align-items: center;
+  border-radius: 16rpx;
+}
+
+.date-search-page-search-empty-view {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-search-page-search-empty-text {
+  font-size: 36rpx;
+  color: #E1E2E3;
+}

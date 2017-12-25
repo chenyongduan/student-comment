@@ -1,0 +1,28 @@
+<!--pages/home/date-search-page/date-search-page.wxml-->
+
+<template name='date-search-page-item'>
+  <view
+    class='date-search-page-item'
+    bindtap='onResultItemClick'
+    data-studentid='{{id}}'
+    data-gradeid='{{gradeId}}'
+  >
+    <text>{{name}}</text>
+  </view>
+</template>
+
+<view class='date-search-page'>
+  <picker mode="date" value="{{curDate}}" start="2017-08-01" end="{{endDate}}" bindchange="bindDateChange">
+    <view class="section-title date-search-page-date">
+      当前选择: <text class="date-search-page-date-text">{{curDate}}</text>
+    </view>
+  </picker>
+  <view class='date-search-page-content'>
+    <block wx:for="{{searchStudentInfo}}" wx:key="{{index}}">
+      <template is='date-search-page-item' data="{{...item}}" />
+    </block>
+    <view wx:if="{{searchStudentInfo.length === 0}}" class='date-search-page-search-empty-view'>
+      <text class='date-search-page-search-empty-text'>未找到相关信息</text>
+    </view>
+  </view>
+</view>

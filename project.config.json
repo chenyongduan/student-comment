@@ -21,7 +21,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -34,6 +34,12 @@
 					"name": "date-list-page",
 					"pathName": "pages/home/date-list-page/date-list-page",
 					"query": "gradeId=1&&commentId=2&&studentId=1"
+				},
+				{
+					"id": 2,
+					"name": "date-search-page",
+					"pathName": "pages/home/date-search-page/date-search-page",
+					"query": "date=2017-09-28"
 				}
 			]
 		}
