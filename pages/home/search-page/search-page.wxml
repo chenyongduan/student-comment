@@ -1,4 +1,17 @@
 <!--pages/home/search-page/search-page.wxml-->
+
+<template name='search-page-item'>
+  <view
+    class='search-page-item'
+    bindtap='onResultItemClick'
+    data-studentid='{{id}}'
+    data-commentid='{{commentId}}'
+    data-gradeid='{{gradeId}}'
+  >
+    <text>{{name}}</text>
+  </view>
+</template>
+
 <view class='container search-page'>
   <view class='search-page-search-view'>
     <view class='search-page-search-button'>
@@ -27,9 +40,10 @@
   </view>
   <view class='search-page-content'>
     <block wx:for="{{searchResult}}" wx:key="{{index}}">
-      <view class='search-page-item'>
-        {{item.name}}
-      </view>
+      <template is='search-page-item' data="{{...item}}" />
     </block>
+    <view wx:if="{{searchResult.length === 0}}" class='search-page-search-empty-view'>
+      <text class='search-page-search-empty-text'>未找到相关信息</text>
+    </view>
   </view>
 </view>

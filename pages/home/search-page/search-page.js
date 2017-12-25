@@ -19,6 +19,7 @@ Page({
           try {
             var value = wx.getStorageSync(`grade_${id}_${studentId}`);
             if (value) {
+              value.gradeId = id;
               studentInfos.push(value);
             }
           } catch (e) {}
@@ -90,10 +91,18 @@ Page({
         const curStudentInfo = {};
         curStudentInfo.id = studentInfo.id;
         curStudentInfo.name = studentInfo.name;
+        curStudentInfo.gradeId = studentInfo.gradeId;
+        curStudentInfo.commentId = id;
         curStudentInfo.commentKeys = searchInfo;
         searchResult.push(curStudentInfo);
       }
     });
     this.setData({ searchResult, searchOptions: [] });
-  }
+  },
+  onResultItemClick: function (e) {
+    const { commentid, gradeid, studentid } = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: `/pages/home/date-list-page/date-list-page?gradeId=${gradeid}&studentId=${studentid}&commentId=${commentid}`,
+    });
+  },
 })

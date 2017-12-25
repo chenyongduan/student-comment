@@ -1,0 +1,16 @@
+/* pages/home/date-list-page/date-list-page.wxss */
+
+.date-list-page {
+  width: 100%;
+  padding: 40rpx 40rpx;
+}
+
+.date-list-page-button {
+  flex: 1;
+  border-bottom: #E5E5E5 2rpx solid;
+  padding: 24rpx 16rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}

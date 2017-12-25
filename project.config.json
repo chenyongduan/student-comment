@@ -28,6 +28,12 @@
 					"name": "search",
 					"pathName": "pages/home/search-page/search-page",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "date-list-page",
+					"pathName": "pages/home/date-list-page/date-list-page",
+					"query": "gradeId=1&&commentId=2&&studentId=1"
 				}
 			]
 		}

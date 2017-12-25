@@ -1,0 +1,13 @@
+<!--pages/home/date-list-page/date-list-page.wxml-->
+
+<view class='date-list-page'>
+  <text>评价类型：{{commentName}} 班级:{{gradeName}} 姓名:{{studentName}}</text>
+  <block wx:for='{{dateInfo}}' wx:key='{{index}}'>
+    <view
+      class='date-list-page-button'
+      bindtap='onDateClick'
+      data-datename='{{item}}'
+    >{{item}}</view>
+  </block>
+</view>
+

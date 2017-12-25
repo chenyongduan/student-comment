@@ -8,6 +8,10 @@
   padding: 32rpx 0;
 }
 
+.student-page-date-text {
+  color: #32cdff;
+}
+
 .student-page-comment {
   width: 48%;
   display: flex;

@@ -13,8 +13,12 @@ Page({
   studentId: 0,
   index: null,
   onLoad: function (options) {
-    const { gradeId, studentId, index } = options;
-    const { curDate } = this.data;
+    const { gradeId, studentId, index, dateName } = options;
+    let { curDate } = this.data;
+    if (dateName) {
+      this.setData({ curDate: dateName });
+      curDate = dateName;
+    }
     this.gradeId = gradeId;
     this.studentId = studentId;
     this.index = index;
@@ -38,7 +42,7 @@ Page({
   },
   onUnload: function () {
     const { studentInfo } = this.data;
-    if (this.index === null) return;
+    if (this.index === null || this.index === undefined) return;
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 2];
     if (prevPage) {
