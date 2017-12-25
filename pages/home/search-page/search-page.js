@@ -105,4 +105,9 @@ Page({
       url: `/pages/home/date-list-page/date-list-page?gradeId=${gradeid}&studentId=${studentid}&commentId=${commentid}`,
     });
   },
+  onDateSearchClick: function () {
+    wx.navigateTo({
+      url: `/pages/home/date-search-page/date-search-page`,
+    });
+  },
 })

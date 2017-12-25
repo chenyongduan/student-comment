@@ -13,6 +13,7 @@
 </template>
 
 <view class='container search-page'>
+  <button class='btn-normal' bindtap='onDateSearchClick'>日期搜索</button>
   <view class='search-page-search-view'>
     <view class='search-page-search-button'>
       <icon type="search" size='20' />
