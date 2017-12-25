@@ -13,11 +13,13 @@ Page({
     commentOptions: [],
     studentInfos: [],
     curIndex: null,
+    gradeId: null,
   },
   onLoad: function (options) {
     wx.getStorage({
       key: 'grade',
       success: (res) => {
+        const { gradeIndex } = this.data;
         const gradeOptions = res.data.map(value => value.name);
         const { id, studentIds } = res.data[0];
         const studentInfos = [];
@@ -31,7 +33,7 @@ Page({
             // Do something when catch error
           }
         });
-        this.setData({ gradeInfos: res.data, gradeOptions });
+        this.setData({ gradeInfos: res.data, gradeId: id, gradeOptions });
         this.calcTotalComment(studentInfos);
       }
     });
@@ -149,6 +151,7 @@ Page({
     this.calcTotalComment(studentInfos);
     this.setData({
       gradeIndex: index,
+      gradeId: id,
       curIndex: null,
     });
   },
@@ -184,6 +187,12 @@ Page({
   onSearchClick: function () {
     wx.navigateTo({
       url: 'search-page/search-page',
+    });
+  },
+  onCommentButtonClick: function (e) {
+    const { commentid, gradeid, studentid } = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: `/pages/home/date-list-page/date-list-page?gradeId=${gradeid}&studentId=${studentid}&commentId=${commentid}`,
     });
   },
 })
