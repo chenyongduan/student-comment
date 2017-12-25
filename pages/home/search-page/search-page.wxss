@@ -69,10 +69,13 @@
   width: 100%;
   display: flex;
   flex: 1;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .search-page-item {
-  width: 100%;
+  width: 45%;
   height: 100rpx;
   border: #E5E5E5 2rpx solid;
   padding-left: 16rpx;
