@@ -5,8 +5,14 @@
   padding: 0 40rpx;
 }
 
+.home-page-search-view {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
 .home-page-search-button {
-  width: 70%;
+  width: 45%;
   border: #E5E5E5 2rpx solid;
   border-radius: 16rpx;
   padding: 12rpx 0; 

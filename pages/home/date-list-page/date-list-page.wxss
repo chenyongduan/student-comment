@@ -5,6 +5,20 @@
   padding: 40rpx 40rpx;
 }
 
+.date-list-page-info {
+  display: flex;
+  flex-direction: column;
+  border: 2rpx solid #32cdff;
+  padding: 40rpx;
+  border-radius: 16rpx;
+}
+
+.date-list-page-info-text {
+  padding: 8rpx 0;
+  font-size: 36rpx;
+  color: #8A8F9B;
+}
+
 .date-list-page-button {
   flex: 1;
   border-bottom: #E5E5E5 2rpx solid;

@@ -3,6 +3,9 @@
 .date-search-page {
   height: 100%;
   padding: 0 40rpx;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .date-search-page-date {

@@ -29,7 +29,7 @@ Page({
       this.searchByDate(date);
     });
   },
-  searchByDate: function (date) {
+  searchByDate: function (date = moment().format('YYYY-MM-DD')) {
     if (this.studentInfos.length === 0) return;
     this.setData({ curDate: date });
     const searchStudentInfo = [];

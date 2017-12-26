@@ -39,9 +39,15 @@
 </template>
 
 <view class='container home-page'>
-  <view class='home-page-search-button' bindtap='onSearchClick'>
-    <icon type="search" size='20' />
-    <text class='home-page-search-title'>搜索</text>
+  <view class='home-page-search-view'>
+    <view class='home-page-search-button' bindtap='onSearchClick'>
+      <icon type="search" size='20' />
+      <text class='home-page-search-title'>搜索</text>
+    </view>
+    <view class='home-page-search-button' bindtap='onDateSearchClick'>
+      <icon type="waiting" size='20' />
+      <text class='home-page-search-title'>日期搜索</text>
+    </view>
   </view>
   <picker
     wx:if="{{gradeInfos.length !== 0}}"

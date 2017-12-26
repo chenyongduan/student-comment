@@ -189,6 +189,11 @@ Page({
       url: 'search-page/search-page',
     });
   },
+  onDateSearchClick: function () {
+    wx.navigateTo({
+      url: `/pages/home/date-search-page/date-search-page`,
+    });
+  },
   onCommentButtonClick: function (e) {
     const { commentid, gradeid, studentid } = e.currentTarget.dataset;
     wx.navigateTo({

@@ -1,7 +1,10 @@
 <!--pages/home/date-list-page/date-list-page.wxml-->
 
 <view class='date-list-page'>
-  <text>评价类型：{{commentName}} 班级:{{gradeName}} 姓名:{{studentName}}</text>
+  <view class='date-list-page-info'>
+    <text class='date-list-page-info-text'>评价类型: {{commentName}}</text>
+    <text class='date-list-page-info-text'>班级: {{gradeName}} 姓名: {{studentName}}</text>
+  </view>
   <block wx:for='{{dateInfo}}' wx:key='{{index}}'>
     <view
       class='date-list-page-button'
