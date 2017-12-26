@@ -38,6 +38,10 @@ Page({
   bindSearchInput: function (e) {
     this.inputValue = e.detail.value;
     const { commentOptions } = this.data;
+    if (this.inputValue === '') {
+      this.setData({ searchOptions: commentOptions });
+      return;
+    }
     const searchOptions = [];
     commentOptions.map((value) => {
       const isSame = value.name.match(this.inputValue);
@@ -46,6 +50,17 @@ Page({
       }
     });
     this.setData({ searchOptions });
+  },
+  bindSearchForcus: function () {
+    if (this.inputValue !== '') return;
+    const { commentOptions } = this.data;
+    this.setData({ searchOptions: commentOptions });
+  },
+  onPageClick: function () {
+    this.setData({ searchOptions: [] });
+  },
+  bindSearchViewCatch: function () {
+
   },
   matchByCommentName: function () {
     const { commentOptions } = this.data;

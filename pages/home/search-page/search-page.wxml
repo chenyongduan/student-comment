@@ -12,17 +12,17 @@
   </view>
 </template>
 
-<view class='container search-page'>
-  <view class='search-page-search-view'>
+<view class='container search-page' bindtap='onPageClick'>
+  <view class='search-page-search-view' catchtap='bindSearchViewCatch'>
     <view class='search-page-search-button'>
       <icon type="search" size='20' />
       <input
         class='search-page-search-input'
         bindinput="bindSearchInput"
+        bindfocus="bindSearchForcus"
         bindconfirm="bindConfirmEvent"
         placeholder='请输入评价类型'
         placeholder-class='search-page-search-placeholder'
-        focus
       />
       <view wx:if="{{searchOptions.length > 0}}" class='search-page-options'>
         <block wx:for="{{searchOptions}}" wx:key="{{index}}">
