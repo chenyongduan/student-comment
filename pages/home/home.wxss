@@ -46,6 +46,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 24rpx 0;
 }
 
 .home-student-title-name {
@@ -99,6 +100,15 @@
   border-radius: 16rpx;
   font-size: 32rpx;
   color: #696D76;
+}
+
+.home-student-comment-text {
+  display: flex;
+  flex: 1;
+}
+
+.home-student-comment-count {
+  margin-left: 16rpx;
 }
 
 .home-stuent-empty {

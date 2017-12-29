@@ -2,14 +2,15 @@
 
 <template name="student-comment">
   <view
+    wx:if="{{count > 0}}"
     class='home-student-comment'
     bindtap='onCommentButtonClick'
     data-gradeid='{{gradeId}}'
     data-commentid='{{commentId}}'
     data-studentid='{{studentId}}'
   >
-    <text>{{title}}</text>
-    <text>{{count || 0}}</text>
+    <text class='home-student-comment-text'>{{title}}</text>
+    <text class='home-student-comment-count'>{{count}}</text>
   </view>
 </template>
 
@@ -31,7 +32,7 @@
       <block wx:for="{{commentOptions}}" wx:key="{{index}}">
         <template
           is='student-comment'
-          data="{{ title: item.name, count: totalComment[item.id], commentId: item.id, studentId: id, gradeId }}"
+          data="{{ title: item.name, count: totalComment[item.id] || 0, commentId: item.id, studentId: id, gradeId }}"
         />
       </block>
     </view>

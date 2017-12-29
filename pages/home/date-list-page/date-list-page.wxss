@@ -11,6 +11,7 @@
   border: 2rpx solid #32cdff;
   padding: 40rpx;
   border-radius: 16rpx;
+  margin-bottom: 40rpx;
 }
 
 .date-list-page-info-text {
@@ -27,4 +28,6 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  font-size: 32rpx;
+  color: #4B4F57;
 }

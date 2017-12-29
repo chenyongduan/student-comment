@@ -21,7 +21,7 @@
 
 .edit-student-button {
   width: 30%;
-  height: 80rpx;
+  height: 100rpx;
   margin: 16rpx 1.5%;
   border: #E5E5E5 2rpx solid;
   border-radius: 16rpx;
@@ -30,6 +30,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  word-break: break-all;
+  padding: 16rpx 32rpx;
 }
 
 .edit-student-button-input {
