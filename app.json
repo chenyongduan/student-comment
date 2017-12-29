@@ -25,8 +25,8 @@
       },
       {
         "pagePath": "pages/edit/edit",
-        "iconPath": "images/ic_tab_classmate.png",
-        "selectedIconPath": "images/ic_tab_classmate_press.png",
+        "iconPath": "images/ic_tab_edit.png",
+        "selectedIconPath": "images/ic_tab_edit_press.png",
         "text": "编辑"
       }
     ]
