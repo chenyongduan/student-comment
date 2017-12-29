@@ -7,6 +7,7 @@
     data-studentid='{{id}}'
     data-commentid='{{commentId}}'
     data-gradeid='{{gradeId}}'
+    style="margin-left: {{index%3 === 0 ? '0' : '5%'}};"
   >
     <text>{{name}}</text>
   </view>
@@ -40,12 +41,12 @@
     </view>
     <view class='search-page-search-text' bindtap='onSearchClick'>搜索</view>
   </view>
-  <view class='search-page-content'>
+  <view wx:if="{{searchResult.length > 0}}" class='search-page-content'>
     <block wx:for="{{searchResult}}" wx:key="{{index}}">
-      <template is='search-page-item' data="{{...item}}" />
+      <template is='search-page-item' data="{{...item, index}}" />
     </block>
-    <view wx:if="{{searchResult.length === 0}}" class='search-page-search-empty-view'>
-      <text class='search-page-search-empty-text'>未找到相关信息</text>
-    </view>
+  </view>
+  <view wx:if="{{searchResult.length === 0}}" class='search-page-search-empty-view'>
+    <text class='search-page-search-empty-text'>未找到相关信息</text>
   </view>
 </view>

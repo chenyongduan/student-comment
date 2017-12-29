@@ -3,6 +3,8 @@
 .search-page {
   width: 100%;
   padding: 0 40rpx;
+  display: flex;
+  flex: 1;
 }
 
 .search-page-search-view {
@@ -40,7 +42,7 @@
 
 .search-page-search-placeholder {
   font-size: 32rpx;
-  color: #E3E3E3;
+  color: #babdc3;
 }
 
 .search-page-options {
@@ -68,25 +70,27 @@
 .search-page-content {
   width: 100%;
   display: flex;
-  flex: 1;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .search-page-item {
-  width: 45%;
+  width: 30%;
   height: 100rpx;
   border: #E5E5E5 2rpx solid;
-  padding-left: 16rpx;
   font-size: 32rpx;
   color: #696D76;
   display: flex;
   align-items: center;
-  border-radius: 16rpx;
+  justify-content: center;
+  border-radius: 16rpx; 
+  margin-top: 16rpx;
 }
 
 .search-page-search-empty-view {
+  width: 100%;
   display: flex;
   flex: 1;
   justify-content: center;
@@ -95,5 +99,5 @@
 
 .search-page-search-empty-text {
   font-size: 36rpx;
-  color: #E1E2E3;
+  color: #999ea8;
 }
