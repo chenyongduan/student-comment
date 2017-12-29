@@ -13,7 +13,7 @@
 
 .home-page-search-button {
   width: 45%;
-  border: #E5E5E5 2rpx solid;
+  border: #D3D5DA 2rpx solid;
   border-radius: 16rpx;
   padding: 12rpx 0; 
   margin: 32rpx auto 0;
@@ -72,8 +72,7 @@
 
 .home-student-button {
   width: 100%;
-  /* padding: 8rpx 16rpx; */
-  border-bottom: #E5E5E5 2rpx solid;
+  border-bottom: #D3D5DA 2rpx solid;
   font-size: 32rpx;
   color: #696D76;
 }
@@ -96,7 +95,7 @@
   height: 100rpx;
   margin: 16rpx 0;
   padding: 0 32rpx;
-  border: #E5E5E5 2rpx solid;
+  border: #D3D5DA 2rpx solid;
   border-radius: 16rpx;
   font-size: 32rpx;
   color: #696D76;

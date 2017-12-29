@@ -10,7 +10,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#32cdff",
-    "navigationBarTitleText": "学生绩效",
+    "navigationBarTitleText": "学生综合评价系统",
     "navigationBarTextStyle": "#fff"
   },
   "tabBar": {

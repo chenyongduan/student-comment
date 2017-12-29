@@ -66,6 +66,10 @@
     </block>
   </view>
   <view wx:if="{{gradeInfos.length === 0}}" class='home-stuent-empty'>
+     <text class='home-student-empty-title'>当前没有班级信息</text>
+     <button class='button-border' size='mini' bindtap='onAddStudentClick'>添加班级</button>
+  </view>
+  <view wx:if="{{gradeInfos.length > 0 && studentInfos.length === 0}}" class='home-stuent-empty'>
      <text class='home-student-empty-title'>当前没有学生信息</text>
      <button class='button-border' size='mini' bindtap='onAddStudentClick'>添加学生</button>
   </view>

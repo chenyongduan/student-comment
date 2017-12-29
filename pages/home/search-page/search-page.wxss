@@ -59,7 +59,7 @@
 
 .search-page-options-item {
   height: 100rpx;
-  border-bottom: #E5E5E5 2rpx solid;
+  border-bottom: #D3D5DA 2rpx solid;
   display: flex;
   align-items: center;
   padding-left: 16rpx;
@@ -79,7 +79,7 @@
 .search-page-item {
   width: 30%;
   height: 100rpx;
-  border: #E5E5E5 2rpx solid;
+  border: #D3D5DA 2rpx solid;
   font-size: 32rpx;
   color: #696D76;
   display: flex;
