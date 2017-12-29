@@ -7,9 +7,9 @@ Page({
     searchOptions: [],
     commentOptions: [],
     searchResult: [],
+    inputValue: '',
   },
   studentInfos: [],
-  inputValue: '',
   onLoad: function (options) {
     wxPromise(wx.getStorage, { key: 'grade' }).then((res) => {
       const studentInfos = [];
@@ -36,23 +36,24 @@ Page({
     });
   },
   bindSearchInput: function (e) {
-    this.inputValue = e.detail.value;
+    const inputValue = e.detail.value;
     const { commentOptions } = this.data;
-    if (this.inputValue === '') {
+    if (inputValue === '') {
       this.setData({ searchOptions: commentOptions });
       return;
     }
     const searchOptions = [];
     commentOptions.map((value) => {
-      const isSame = value.name.match(this.inputValue);
-      if (isSame && this.inputValue !== '') {
+      const isSame = value.name.match(inputValue);
+      if (isSame && inputValue !== '') {
         searchOptions.push(value);
       }
     });
-    this.setData({ searchOptions });
+    this.setData({ searchOptions, inputValue });
   },
   bindSearchForcus: function () {
-    if (this.inputValue !== '') return;
+    const { inputValue } = this.data;
+    if (inputValue !== '') return;
     const { commentOptions } = this.data;
     this.setData({ searchOptions: commentOptions });
   },
@@ -63,10 +64,10 @@ Page({
 
   },
   matchByCommentName: function () {
-    const { commentOptions } = this.data;
+    const { commentOptions, inputValue } = this.data;
     let commentId = null;
     commentOptions.map((value) => {
-      const isSame = value.name.search(this.inputValue);
+      const isSame = value.name.search(inputValue);
       if (isSame === 0) {
         commentId = value.id;
       }
@@ -74,7 +75,8 @@ Page({
     return commentId;
   },
   onSearchClick: function (e) {
-    if (this.inputValue === '') {
+    const { inputValue } = this.data;
+    if (inputValue === '') {
       wx.showToast({
         title: '评价类型为空!',
       });
@@ -86,8 +88,9 @@ Page({
     }
   },
   onSearchItemClick: function (e) {
-    const { id } = e.currentTarget.dataset;
+    const { id, name } = e.currentTarget.dataset;
     this.getSearchByCommentId(id);
+    this.setData({ inputValue: name });
   },
   getSearchByCommentId: function (id) {
     const searchResult = [];

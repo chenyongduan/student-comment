@@ -18,6 +18,7 @@
       <icon type="search" size='20' />
       <input
         class='search-page-search-input'
+        value='{{inputValue}}'
         bindinput="bindSearchInput"
         bindfocus="bindSearchForcus"
         bindconfirm="bindConfirmEvent"
@@ -28,6 +29,7 @@
         <block wx:for="{{searchOptions}}" wx:key="{{index}}">
           <view
             data-id='{{item.id}}'
+            data-name='{{item.name}}'
             class='search-page-options-item'
             bindtap='onSearchItemClick'
           >

@@ -41,5 +41,13 @@ App({
   globalData: {
     userInfo: null,
     openId: 0,
+  },
+  setRefreshHomeCallback: function (callback) {
+    this.refreshHomeCallback = callback;
+  },
+  refreshHome: function () {
+    if (this.refreshHomeCallback) {
+      this.refreshHomeCallback();
+    }
   }
 })

@@ -16,6 +16,13 @@ Page({
     gradeId: null,
   },
   onLoad: function (options) {
+    this.refresh();
+    App.setRefreshHomeCallback(this.refresh);
+  },
+  onShow: function () {
+    this.refresh();
+  },
+  refresh: function () {
     wx.getStorage({
       key: 'grade',
       success: (res) => {
@@ -25,7 +32,7 @@ Page({
         const studentInfos = [];
         studentIds.map(studentId => {
           try {
-            var value = wx.getStorageSync(`grade_${id}_${studentId}`); 
+            var value = wx.getStorageSync(`grade_${id}_${studentId}`);
             if (value) {
               studentInfos.push(value);
             }
@@ -39,7 +46,6 @@ Page({
     });
     const commentOptions = this.getComment();
     this.setData({ commentOptions });
-    // this.uploadStudentInfo();
   },
   getComment: function () {
     try {
