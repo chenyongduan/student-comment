@@ -31,6 +31,9 @@
 
 .home-title {
   margin-top: 32rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .home-grade-select {
@@ -54,7 +57,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex: 2;
+  flex: 4;
   padding-left: 16rpx;
 }
 

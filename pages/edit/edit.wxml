@@ -35,7 +35,7 @@
     range="{{gradeOptions}}"
   >
     <view class="section-title edit-title">
-      <text class='edit-grade-select'>{{gradeOptions[gradeIndex]}}</text>学生
+      <text class='edit-grade-select'>{{gradeOptions[gradeIndex]}}</text> 学生
     </view>
   </picker>
   <view wx:if="{{gradeInfos.length !== 0}}" class='edit-student-content'>

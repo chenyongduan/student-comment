@@ -10,6 +10,7 @@
 
 .edit-grade-select {
   color: #32cdff;
+  text-decoration: underline;
 }
 
 .edit-student-content {

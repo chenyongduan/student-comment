@@ -11,6 +11,7 @@
     <view class="section-title date-search-page-date">
       当前选择:
       <text class="date-search-page-date-text">{{curDate}}</text>
+      <image class='drop-down-image' src='/images/ic_down.png'/>
     </view>
   </picker>
   <view wx:if="{{searchStudentInfo.length > 0}}" class='date-search-page-content'>

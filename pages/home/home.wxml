@@ -26,7 +26,7 @@
         class='home-student-title-detail'
         data-index='{{index}}'
         catchtap='onStudentDetailClick'
-      >详情</view>
+      >评价</view>
     </view>
     <view wx:if="{{curIndex === index}}" class='home-student-button-content'>
       <block wx:for="{{commentOptions}}" wx:key="{{index}}">
@@ -58,6 +58,7 @@
   >
     <view class="section-title home-title">
       班级：<text class='home-grade-select'>{{gradeOptions[gradeIndex]}}</text>
+      <image class='drop-down-image' src='/images/ic_down.png'/>
     </view>
   </picker>
   <view wx:if="{{gradeInfos.length !== 0}}" class='home-student-content'>
