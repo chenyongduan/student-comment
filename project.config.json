@@ -8,7 +8,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.5.4",
+	"libVersion": "1.6.4",
 	"appid": "wx5165f84d4d40b934",
 	"projectname": "wx-student-comment",
 	"condition": {

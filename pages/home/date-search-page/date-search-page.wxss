@@ -19,7 +19,6 @@
 .date-search-page-content {
   width: 100%;
   display: flex;
-  flex: 1;
   flex-wrap: wrap;
   flex-direction: row;
 }
@@ -46,5 +45,5 @@
 
 .date-search-page-search-empty-text {
   font-size: 36rpx;
-  color: #E1E2E3;
+  color: #999ea8;
 }
