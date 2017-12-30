@@ -46,6 +46,6 @@ text {
 .drop-down-image {
   height: 32rpx;
   width: 32rpx;
-  margin-left: 24rpx;
+  margin-left: 16rpx;
   margin-top: 8rpx;
 }

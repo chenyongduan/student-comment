@@ -68,6 +68,7 @@
   border-radius: 16rpx;
   width: 75%;
   padding: 40rpx;
+  margin-bottom: 200rpx;
 }
 
 .student-settig-footer {

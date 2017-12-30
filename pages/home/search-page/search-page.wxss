@@ -28,7 +28,7 @@
 }
 
 .search-page-search-input {
-  font-size: 28rpx;
+  font-size: 32rpx;
   color: #696D76;
   margin-left: 8rpx;
   width: 70%;

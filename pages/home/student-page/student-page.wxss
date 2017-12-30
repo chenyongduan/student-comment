@@ -8,6 +8,12 @@
   padding: 32rpx 0;
 }
 
+.student-page-name {
+  font-size: 40rpx;
+  color: #282B31;
+  margin-top: 32rpx;
+}
+
 .student-page-date-text {
   color: #32cdff;
 }
