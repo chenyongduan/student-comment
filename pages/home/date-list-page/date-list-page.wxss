@@ -18,6 +18,18 @@
   padding: 8rpx 0;
   font-size: 36rpx;
   color: #8A8F9B;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.date-list-page-info-underline {
+  border-bottom: #E5E5E5 2rpx solid;
+  margin-left: 32rpx;
+  padding: 8rpx;
+  display: flex;
+  flex: 1;
+  margin-right: 80rpx;
 }
 
 .date-list-page-button {

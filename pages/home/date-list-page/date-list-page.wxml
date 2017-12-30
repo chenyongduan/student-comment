@@ -2,8 +2,15 @@
 
 <view class='date-list-page'>
   <view class='date-list-page-info'>
-    <text class='date-list-page-info-text'>评价类型: {{commentName}}</text>
-    <text class='date-list-page-info-text'>班级: {{gradeName}} 姓名: {{studentName}}</text>
+    <view class='date-list-page-info-text'>评价类型:
+      <view class='date-list-page-info-underline'>{{commentName}}</view>
+    </view>
+    <view class='date-list-page-info-text'>班级:
+      <view class='date-list-page-info-underline'>{{gradeName}}</view>
+    </view>
+    <view class='date-list-page-info-text'>姓名:
+      <view class='date-list-page-info-underline'>{{studentName}}</view>
+    </view>
   </view>
   <block wx:for='{{dateInfo}}' wx:key='{{index}}'>
     <view
