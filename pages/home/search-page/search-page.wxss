@@ -2,13 +2,12 @@
 
 .search-page {
   width: 100%;
-  padding: 0 40rpx;
   display: flex;
   flex: 1;
 }
 
 .search-page-search-view {
-  width: 100%;
+  width: 90%;
   margin: 32rpx auto;
   display: flex;
   flex-direction: row;
@@ -70,10 +69,14 @@
 .search-page-content {
   width: 100%;
   display: flex;
+  flex: 1;
+}
+
+.search-page-scroll-content {
+  display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
+  padding: 0 40rpx 40rpx;
 }
 
 .search-page-item {

@@ -1,14 +1,7 @@
 <!--pages/home/search-page/search-page.wxml-->
 
 <template name='search-page-item'>
-  <view
-    class='search-page-item'
-    bindtap='onResultItemClick'
-    data-studentid='{{id}}'
-    data-commentid='{{commentId}}'
-    data-gradeid='{{gradeId}}'
-    style="margin-left: {{index%3 === 0 ? '0' : '5%'}};margin-top: {{index > 2 ? '32rpx' : '0'}};"
-  >
+  <view class='search-page-item' bindtap='onResultItemClick' data-studentid='{{id}}' data-commentid='{{commentId}}' data-gradeid='{{gradeId}}' style="margin-left: {{index%3 === 0 ? '0' : '5%'}};margin-top: {{index > 2 ? '32rpx' : '0'}};">
     <text>{{name}}</text>
   </view>
 </template>
@@ -17,23 +10,10 @@
   <view class='search-page-search-view' catchtap='bindSearchViewCatch'>
     <view class='search-page-search-button'>
       <icon type="search" size='20' />
-      <input
-        class='search-page-search-input'
-        value='{{inputValue}}'
-        bindinput="bindSearchInput"
-        bindfocus="bindSearchForcus"
-        bindconfirm="bindConfirmEvent"
-        placeholder='请输入评价类型'
-        placeholder-class='search-page-search-placeholder'
-      />
+      <input class='search-page-search-input' value='{{inputValue}}' bindinput="bindSearchInput" bindfocus="bindSearchForcus" bindconfirm="bindConfirmEvent" placeholder='请输入评价类型' placeholder-class='search-page-search-placeholder' />
       <view wx:if="{{searchOptions.length > 0}}" class='search-page-options'>
         <block wx:for="{{searchOptions}}" wx:key="{{index}}">
-          <view
-            data-id='{{item.id}}'
-            data-name='{{item.name}}'
-            class='search-page-options-item'
-            bindtap='onSearchItemClick'
-          >
+          <view data-id='{{item.id}}' data-name='{{item.name}}' class='search-page-options-item' bindtap='onSearchItemClick'>
             {{item.name}}
           </view>
         </block>
@@ -42,9 +22,13 @@
     <view class='search-page-search-text' bindtap='onSearchClick'>搜索</view>
   </view>
   <view wx:if="{{searchResult.length > 0}}" class='search-page-content'>
-    <block wx:for="{{searchResult}}" wx:key="{{index}}">
-      <template is='search-page-item' data="{{...item, index}}" />
-    </block>
+    <scroll-view scroll-y>
+      <view class='search-page-scroll-content'>
+        <block wx:for="{{searchResult}}" wx:key="{{index}}">
+          <template is='search-page-item' data="{{...item, index}}" />
+        </block>
+      </view>
+    </scroll-view>
   </view>
   <view wx:if="{{searchResult.length === 0}}" class='search-page-search-empty-view'>
     <text class='search-page-search-empty-text'>未找到相关信息</text>

@@ -12,12 +12,17 @@
       <view class='date-list-page-info-underline'>{{studentName}}</view>
     </view>
   </view>
-  <block wx:for='{{dateInfo}}' wx:key='{{index}}'>
-    <view
-      class='date-list-page-button'
-      bindtap='onDateClick'
-      data-datename='{{item}}'
-    >{{item}}</view>
-  </block>
+  <view class='date-list-page-content'>
+    <scroll-view scroll-y>
+      <block wx:for='{{dateInfo}}' wx:key='{{index}}'>
+        <view
+          class='date-list-page-button'
+          bindtap='onDateClick'
+          data-datename='{{item}}'
+        >{{item}}</view>
+      </block>
+      <view style='height: 40rpx;' />
+    </scroll-view>
+  </view>
 </view>
 

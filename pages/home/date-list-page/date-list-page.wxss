@@ -2,7 +2,10 @@
 
 .date-list-page {
   width: 100%;
-  padding: 40rpx 40rpx;
+  height: 100%;
+  padding-top: 40rpx;
+  display: flex;
+  flex-direction: column;
 }
 
 .date-list-page-info {
@@ -11,7 +14,7 @@
   border: 2rpx solid #32cdff;
   padding: 40rpx;
   border-radius: 16rpx;
-  margin-bottom: 40rpx;
+  margin: 0 40rpx 40rpx;
 }
 
 .date-list-page-info-text {
@@ -32,8 +35,13 @@
   margin-right: 80rpx;
 }
 
-.date-list-page-button {
+.date-list-page-content {
+  display: flex;
   flex: 1;
+}
+
+.date-list-page-button {
+  width: 90%;
   border-bottom: #E5E5E5 2rpx solid;
   padding: 24rpx 16rpx;
   display: flex;
@@ -42,4 +50,5 @@
   align-items: center;
   font-size: 32rpx;
   color: #4B4F57;
+  margin: 0 5%;
 }

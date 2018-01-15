@@ -34,7 +34,7 @@ Page({
       var value = wx.getStorageSync(`grade_${gradeId}_${studentId}`);
       if (value) {
         if (value.comment) {
-          const dateInfo = [];
+          let dateInfo = [];
           const commentKeys = Object.keys(value.comment);
           commentKeys.map((key) => {
             const ret = value.comment[key].findIndex((id) => { return id === commentId });
