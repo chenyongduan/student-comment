@@ -3,7 +3,7 @@ import moment from '../../libs/moment';
 import { wxRequest } from '../../utils/wx-request';
 import { uploadStudent } from '../../server-api/index';
 
-const App = getApp();
+const app = getApp();
 
 Page({
   data: {
@@ -17,7 +17,7 @@ Page({
   },
   onLoad: function (options) {
     this.refresh();
-    App.setRefreshHomeCallback(this.refresh);
+    app.setRefreshHomeCallback(this.refresh);
   },
   onShow: function () {
     this.refresh();
@@ -28,7 +28,7 @@ Page({
       success: (res) => {
         const { gradeIndex } = this.data;
         const gradeOptions = res.data.map(value => value.name);
-        const { id, studentIds } = res.data[0];
+        const { id, studentIds } = res.data[gradeIndex];
         const studentInfos = [];
         studentIds.map(studentId => {
           try {
@@ -149,9 +149,7 @@ Page({
         if (value) {
           studentInfos.push(value);
         }
-      } catch (e) {
-        // Do something when catch error
-      }
+      } catch (e) {}
     });
 
     this.calcTotalComment(studentInfos);
@@ -179,6 +177,9 @@ Page({
     });
   },
   onAddStudentClick: function (e) {
+    const { gradeIndex } = this.data;
+    app.globalData.homeGradeIndex = gradeIndex;
+    app.editChangeGrade(gradeIndex);
     wx.switchTab({
       url: '../edit/edit',
     });

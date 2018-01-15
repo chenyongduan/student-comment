@@ -41,6 +41,7 @@ App({
   globalData: {
     userInfo: null,
     openId: 0,
+    homeGradeIndex: 0,
   },
   setRefreshHomeCallback: function (callback) {
     this.refreshHomeCallback = callback;
@@ -49,5 +50,13 @@ App({
     if (this.refreshHomeCallback) {
       this.refreshHomeCallback();
     }
-  }
+  },
+  setEditChangeGradeCallback: function (callback) {
+    this.editChangeGradeCallback = callback;
+  },
+  editChangeGrade: function (index) {
+    if (this.editChangeGradeCallback) {
+      this.editChangeGradeCallback(index);
+    }
+  },
 })

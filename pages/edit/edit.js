@@ -1,4 +1,7 @@
 // pages/edit/edit.js
+
+const app = getApp();
+
 Page({
   data: {
     gradeOptions: [],
@@ -11,11 +14,13 @@ Page({
   },
   studentInput: '',
   onLoad: function (options) {
+    const gradeIndex = app.globalData.homeGradeIndex;
+    this.setData({ gradeIndex });
     wx.getStorage({
       key: 'grade',
       success: (res) => {
         const gradeOptions = res.data.map(value => value.name);
-        const { id, studentIds } = res.data[0];
+        const { id, studentIds } = res.data[gradeIndex];
         const studentInfos = [];
         studentIds.map(studentId => {
           try {
@@ -23,9 +28,7 @@ Page({
             if (value) {
               studentInfos.push(value);
             }
-          } catch (e) {
-            // Do something when catch error
-          }
+          } catch (e) {}
         });
         this.setData({ gradeInfos: res.data, gradeOptions, studentInfos });
       }
@@ -36,10 +39,15 @@ Page({
         this.setData({ commentInfos: res.data });
       },
     });
+    
+    app.setEditChangeGradeCallback(this.changeGradeByIndex);
   },
   bindGradeChange: function (e) {
-    const { gradeInfos } = this.data;
     const index = e.detail.value;
+    this.changeGradeByIndex(index);
+  },
+  changeGradeByIndex: function (index) {
+    const { gradeInfos } = this.data;
     const { id, studentIds } = gradeInfos[index];
     const studentInfos = [];
     studentIds.map(studentId => {
@@ -48,11 +56,9 @@ Page({
         if (value) {
           studentInfos.push(value);
         }
-      } catch (e) {
-        // Do something when catch error
-      }
+      } catch (e) {}
     });
-
+    console.warn('========app', studentInfos, index)
     this.setData({
       studentInfos,
       gradeIndex: index,

@@ -7,7 +7,7 @@
     data-studentid='{{id}}'
     data-commentid='{{commentId}}'
     data-gradeid='{{gradeId}}'
-    style="margin-left: {{index%3 === 0 ? '0' : '5%'}};"
+    style="margin-left: {{index%3 === 0 ? '0' : '5%'}};margin-top: {{index > 2 ? '32rpx' : '0'}};"
   >
     <text>{{name}}</text>
   </view>
