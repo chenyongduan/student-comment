@@ -1,14 +1,7 @@
 <!--pages/home/home.wxml-->
 
 <template name="student-comment">
-  <view
-    wx:if="{{count > 0}}"
-    class='home-student-comment'
-    bindtap='onCommentButtonClick'
-    data-gradeid='{{gradeId}}'
-    data-commentid='{{commentId}}'
-    data-studentid='{{studentId}}'
-  >
+  <view wx:if="{{count > 0}}" class='home-student-comment' bindtap='onCommentButtonClick' data-gradeid='{{gradeId}}' data-commentid='{{commentId}}' data-studentid='{{studentId}}'>
     <text class='home-student-comment-text'>{{title}}</text>
     <text class='home-student-comment-count'>{{count}}</text>
   </view>
@@ -17,23 +10,12 @@
 <template name="student-button">
   <view class='home-student-button'>
     <view class='section-title home-student-title'>
-      <view
-        class='home-student-title-name'
-        data-index="{{index}}"
-        bindtap="onStudentButtonClick"
-      >{{name}}</view>
-      <view
-        class='home-student-title-detail'
-        data-index='{{index}}'
-        catchtap='onStudentDetailClick'
-      >评价</view>
+      <view class='home-student-title-name' data-index="{{index}}" bindtap="onStudentButtonClick">{{name}}</view>
+      <view class='home-student-title-detail' data-index='{{index}}' catchtap='onStudentDetailClick'>评价</view>
     </view>
     <view wx:if="{{curIndex === index}}" class='home-student-button-content'>
       <block wx:for="{{commentOptions}}" wx:key="{{index}}">
-        <template
-          is='student-comment'
-          data="{{ title: item.name, count: totalComment[item.id] || 0, commentId: item.id, studentId: id, gradeId }}"
-        />
+        <template is='student-comment' data="{{ title: item.name, count: totalComment[item.id] || 0, commentId: item.id, studentId: id, gradeId }}" />
       </block>
     </view>
   </view>
@@ -50,28 +32,27 @@
       <text class='home-page-search-title'>日期搜索</text>
     </view>
   </view>
-  <picker
-    wx:if="{{gradeInfos.length !== 0}}"
-    bindchange="bindGradeChange"
-    value="{{gradeIndex}}"
-    range="{{gradeOptions}}"
-  >
+  <picker wx:if="{{gradeInfos.length !== 0}}" bindchange="bindGradeChange" value="{{gradeIndex}}" range="{{gradeOptions}}">
     <view class="section-title home-title">
-      班级：<text class='home-grade-select'>{{gradeOptions[gradeIndex]}}</text>
-      <image class='drop-down-image' src='/images/ic_down.png'/>
+      班级：
+      <text class='home-grade-select'>{{gradeOptions[gradeIndex]}}</text>
+      <image class='drop-down-image' src='/images/ic_down.png' />
     </view>
   </picker>
-  <view wx:if="{{gradeInfos.length !== 0}}" class='home-student-content'>
-    <block wx:for="{{studentInfos}}" wx:key="{{index}}">
-      <template is='student-button' data="{{...item, index, curIndex, commentOptions, gradeId}}" />
-    </block>
+  <view wx:if="{{gradeInfos.length !== 0 && studentInfos.length !== 0}}" class='home-student-content'>
+    <scroll-view scroll-y>
+      <block wx:for="{{studentInfos}}" wx:key="{{index}}">
+        <template is='student-button' data="{{...item, index, curIndex, commentOptions, gradeId}}" />
+      </block>
+      <view style='height: 40rpx;' />
+    </scroll-view>
   </view>
   <view wx:if="{{gradeInfos.length === 0}}" class='home-stuent-empty'>
-     <text class='home-student-empty-title'>当前没有班级信息</text>
-     <button class='button-border' size='mini' bindtap='onAddStudentClick'>添加班级</button>
+    <text class='home-student-empty-title'>当前没有班级信息</text>
+    <button class='button-border' size='mini' bindtap='onAddStudentClick'>添加班级</button>
   </view>
   <view wx:if="{{gradeInfos.length > 0 && studentInfos.length === 0}}" class='home-stuent-empty'>
-     <text class='home-student-empty-title'>当前没有学生信息</text>
-     <button class='button-border' size='mini' bindtap='onAddStudentClick'>添加学生</button>
+    <text class='home-student-empty-title'>当前没有学生信息</text>
+    <button class='button-border' size='mini' bindtap='onAddStudentClick'>添加学生</button>
   </view>
 </view>

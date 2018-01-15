@@ -24,10 +24,10 @@
   width: 30%;
   height: 100rpx;
   margin: 16rpx 1.5%;
-  border: #D3D5DA 2rpx solid;
+  border: #d3d5da 2rpx solid;
   border-radius: 16rpx;
   font-size: 32rpx;
-  color: #696D76;
+  color: #696d76;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,11 +37,11 @@
 
 .edit-student-button-input {
   padding: 16rpx 0;
-  border-bottom: #E5E5E5 2rpx solid;
+  border-bottom: #e5e5e5 2rpx solid;
 }
 
 .edit-student-button-placeholder {
-  color: #CDD0D7;
+  color: #cdd0d7;
 }
 
 .student-setting-modal {
@@ -77,4 +77,36 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 40rpx;
+}
+
+.edit-page-empty-bottom {
+  height: 300rpx;
+  width: 100%;
+}
+
+.contact-button-view {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+}
+
+.contact-button {
+  position: fixed;
+  bottom: 64rpx;
+  right: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffc250;
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 40rpx;
+  box-shadow: 0 0 20rpx 0 rgba(255, 194, 80, 0.12);
 }

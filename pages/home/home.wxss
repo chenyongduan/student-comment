@@ -2,13 +2,15 @@
 
 .home-page {
   width: 100%;
-  padding: 0 40rpx;
+  display: flex;
+  flex: 1;
 }
 
 .home-page-search-view {
   display: flex;
   flex-direction: row;
   width: 100%;
+  padding: 0 40rpx;
 }
 
 .home-page-search-button {
@@ -34,6 +36,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: 0 40rpx;
 }
 
 .home-grade-select {
@@ -41,7 +44,9 @@
 }
 
 .home-student-content {
-  width: 100%;
+  display: flex;
+  flex: 1;
+  width: 100%; 
 }
 
 .home-student-title {
@@ -74,10 +79,11 @@
 }
 
 .home-student-button {
-  width: 100%;
+  width: 90%;
   border-bottom: #D3D5DA 2rpx solid;
   font-size: 32rpx;
   color: #696D76;
+  margin: 0 5%;
 }
 
 .home-student-button-content {
@@ -86,6 +92,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  flex: 1;
 }
 
 .home-student-comment {

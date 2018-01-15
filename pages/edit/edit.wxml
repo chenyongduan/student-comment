@@ -44,6 +44,12 @@
     </block>
     <template is='student-button' data="{{name: '添加', index: ADD_INDEX, type: 'student'}}"    />
   </view>
+  <view class='edit-page-empty-bottom' />
+  <contact-button 
+    class='contact-button'
+    type="default-light" 
+    open-type="contact"
+  />
 </view>
 
 <view wx:if="{{curStudent.index !== undefind}}" class='student-setting-modal'>
