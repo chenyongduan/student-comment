@@ -11,6 +11,7 @@ Page({
     commentInfos: [],
     curStudent: {},
     ADD_INDEX: 999,
+    commentScore: 0,
   },
   studentInput: '',
   onLoad: function (options) {
@@ -19,6 +20,9 @@ Page({
     wx.getStorage({
       key: 'grade',
       success: (res) => {
+        if (res.data && res.data.length === 0) {
+          return;
+        }
         const gradeOptions = res.data.map(value => value.name);
         const { id, studentIds } = res.data[gradeIndex];
         const studentInfos = [];
@@ -48,6 +52,7 @@ Page({
   },
   changeGradeByIndex: function (index) {
     const { gradeInfos } = this.data;
+    if (!gradeInfos[index]) return null;
     const { id, studentIds } = gradeInfos[index];
     const studentInfos = [];
     studentIds.map(studentId => {
@@ -58,7 +63,6 @@ Page({
         }
       } catch (e) {}
     });
-    console.warn('========app', studentInfos, index)
     this.setData({
       studentInfos,
       gradeIndex: index,
@@ -66,22 +70,30 @@ Page({
   },
   onStudentButtonClick: function (e) {
     const { dataset } = e.currentTarget;
-    if (dataset.type === 'grade') {
+    const { type, score } = dataset;
+    let commentScore = null;
+    if (type === 'grade') {
       dataset.title = '班级';
-    } else if (dataset.type === 'comment') {
+    } else if (type === 'comment') {
       dataset.title = '评语';
+      if (score !== undefined) {
+        commentScore = score;
+      }
     } else {
       dataset.title = '学生';
     }
     this.studentInput = '';
     this.setData({ curStudent: dataset });
+    if (commentScore) {
+      this.setData({ commentScore });
+    }
   },
   bindStudentInput: function (e) {
     const { value } = e.detail;
     this.studentInput = value;
   },
   onModalClose: function (e) {
-    this.setData({ curStudent: {} });
+    this.setData({ curStudent: {}, commentScore: 0 });
   },
   onStudentDelete: function (e) {
     const { curStudent, studentInfos, gradeInfos, commentInfos, gradeIndex } = this.data;
@@ -153,14 +165,14 @@ Page({
       ADD_INDEX,
     } = this.data;
     const { name, index, type } = curStudent;
-    if (this.studentInput === '') {
-      if (name === '添加') {
-        wx.showToast({
-          title: '名字为空',
-        });
-      }
+
+    if (this.studentInput === '' && name === '添加') {
+      wx.showToast({
+        title: '名字为空',
+      });
       return;
     }
+
     if (this.studentInput === name) {
       this.setData({ curStudent: {} });
       return;
@@ -225,6 +237,7 @@ Page({
         data: gradeInfos,
       });
     } else if (type === 'comment') {
+      const { commentScore } = this.data;
       let lastId = 0;
       commentInfos.map(value => {
         if (value.id > lastId) {
@@ -234,10 +247,12 @@ Page({
       commentInfos.push({
         id: lastId + 1,
         name: this.studentInput,
+        score: commentScore,
       });
       this.setData({
         commentInfos,
         curStudent: {},
+        commentScore: 0,
       });
       wx.setStorage({
         key: 'comment',
@@ -295,11 +310,15 @@ Page({
         data: gradeInfos,
       });
     } else if (type === 'comment') {
-      if (commentInfos[index].name === this.studentInput) {
+      const { commentScore } = this.data;
+      if (commentInfos[index].name === this.studentInput && commentInfos[index].score === commentScore) {
         this.setData({ curStudent: {} });
         return;
       }
-      commentInfos[index].name = this.studentInput;
+      if (this.studentInput) {
+        commentInfos[index].name = this.studentInput;
+      }
+      commentInfos[index].score = commentScore;
       this.setData({
         commentInfos,
         curStudent: {},
@@ -325,5 +344,9 @@ Page({
         curStudent: {},
       });
     }
+  },
+  onCommentScoreChange: function (evt) {
+    const { value } = evt.detail;
+    this.setData({ commentScore: Number(value) });
   },
 })

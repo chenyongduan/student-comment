@@ -26,6 +26,10 @@ Page({
     wx.getStorage({
       key: 'grade',
       success: (res) => {
+        if (res.data && res.data.length === 0) {
+          this.setData({ gradeInfos: [] });
+          return;
+        }
         const { gradeIndex } = this.data;
         const gradeOptions = res.data.map(value => value.name);
         const { id, studentIds } = res.data[gradeIndex];

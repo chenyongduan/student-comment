@@ -11,10 +11,18 @@ page {
   box-sizing: border-box;
 }
 
-view,
-text {
+view, text {
   box-sizing: border-box;
   position: relative;
+}
+
+button {
+  border: none;
+}
+
+button::after {
+  border: none;
+  border-radius: 0;
 }
 
 .container {

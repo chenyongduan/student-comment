@@ -2,11 +2,12 @@
 
 <template name="student-button">
   <view
-    class='edit-student-button'
+    class="edit-student-button  {{score && score > 0 ? 'edit-student-button-green' : ''}} {{score && score < 0 ? 'edit-student-button-red' : ''}}"
     data-index="{{index}}"
     data-name="{{name}}"
     data-type="{{type}}"
     data-id="{{id}}"
+    data-score="{{score}}"
     bindtap="onStudentButtonClick"
   >
     {{name}}
@@ -52,6 +53,8 @@
   />
 </view>
 
+
+<!-- 编辑弹窗 -->
 <view wx:if="{{curStudent.index !== undefind}}" class='student-setting-modal'>
   <view class='student-setting-content' catchtap='onStudentContentClick'>
     <icon class='edit-setting-close' type="cancel" size="25" bindtap='onModalClose'/>
@@ -62,8 +65,18 @@
       placeholder-class='edit-student-button-placeholder'
       bindinput="bindStudentInput"
       placeholder="{{'请输入' + curStudent.title + '名字'}}"
-      auto-focus
+      auto-focus="{{curStudent.index === ADD_INDEX}}"
     />
+    <view wx:if="{{curStudent.type === 'comment'}}">
+      <view class='section-title'>分值: {{commentScore}}</view>
+      <slider
+        value="{{commentScore}}"
+        bindchange="onCommentScoreChange"
+        min="-10"
+        max="10"
+        show-value
+      />
+    </view>
     <view class='student-settig-footer'>
       <button
         type="warn"
